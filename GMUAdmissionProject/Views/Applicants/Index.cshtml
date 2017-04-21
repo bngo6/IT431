@@ -1,0 +1,24 @@
+﻿@model IEnumerable<GMUAdmissionProject.DAL.Applicant>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+    <h2>List of students</h2>
+    @using (Html.BeginForm("Index", "Applicants", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+    {
+        <div class="form-group">
+            @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search for student" })
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+    }
+    <br />
+    <br />
+    <br />
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_ApplicantDisplayView", item)
+
+}

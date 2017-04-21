@@ -1,0 +1,35 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <div id="user_fullname">
+            <b>** Full name:</b> @Model.FirstName @Model.MiddleName @Model.LastName
+            <b>Email:</b> @Model.Email <b> **</b>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = Model.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="pull-left">
+            <div class="user_info">
+                <b>GPA </b><br />
+                <b>SAT </b><br />
+                <b>Prospective Enrollment Date </b><br />
+                <b>Submission Date </b>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <ul>
+                <li>@Model.GPA</li>
+                <li>@Html.Raw(@Model.MthScore + @Model.VerbScore)</li>
+                <li>@Model.EnrollDate @Model.EnrollYear</li>
+                <li>@Model.SubDate</li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <b>Admission Decision:</b> @Model.AdDecision
+    </div>
+</div>
+
+

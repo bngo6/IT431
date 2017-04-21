@@ -1,0 +1,30 @@
+Students,
+I had a student as a question about how to create a dropdown list, so I figured I'd pass this along to everyone.
+There are a number of ways this can be done.  The easiest way is to use an enumeration.  Then use the EnumDropDownlistFor helper method to display the enum values in a dropdown.  
+Here is one example that create a dropdown list for an enumeration.  
+Here is what you need to do...
+1. Create an enum like...
+    public enum AdminDecisionType
+    {
+        New,
+        Waitlist, 
+        Accepted,
+        Rejected,
+    }
+
+2.  Add a new property to you Applicant class
+        public AdminDecisionType AdminDecision { get; set; }
+
+
+3.  Using package Manager Console,add new migration and update Database
+Add-Migration admin-decision
+Update-Database
+4.  Re-generate your views or manually add calls to @Html.EnumDropDownlostfor() helper
+     <div class="form-group">
+            @Html.LabelFor(model => model.AdminDecision, htmlAttributes: new { @class = "control-label col-md-2" })
+           
+md-10">
+                @Html.EnumDropDownListFor(model => model.AdminDecision, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AdminDecision, "", new { @class = "text-danger" })
+            </div>
+        </div>
